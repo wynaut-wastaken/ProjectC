@@ -21,7 +21,6 @@ namespace ProjectC.view
         
         public static void StartBatch(SpriteBatch _spriteBatch)
         {
-
             var bounds = MainGame._graphics.GraphicsDevice.Viewport.Bounds;
             CamBounds = bounds;
             CameraMatrix = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *

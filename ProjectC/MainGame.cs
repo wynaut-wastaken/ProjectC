@@ -34,6 +34,8 @@ namespace ProjectC
             IsMouseVisible = true;
             Window.Title = "test lol";
             Window.AllowUserResizing = true;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 480;
         }
 
         protected override void LoadContent()
@@ -60,6 +62,10 @@ namespace ProjectC
         {
             if (!IsActive) return;
             WindowBounds = Window.ClientBounds;
+
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 480;
+            _graphics.ApplyChanges();
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
