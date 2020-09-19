@@ -25,6 +25,7 @@ namespace ProjectC.view
         public static Texture2D Tree2Bg;
         public static Texture2D CoinsSmall;
         public static Texture2D CopperOre;
+        public static Texture2D HotbarPart;
 
         public static void ImportAll(MainGame game)
         {
@@ -41,6 +42,7 @@ namespace ProjectC.view
             WallCave = game.Content.Load<Texture2D>("bg_underground");
             CloudBg = game.Content.Load<Texture2D>("clouds");
             Sun = game.Content.Load<Texture2D>("sun");
+            HotbarPart = game.Content.Load<Texture2D>("hotbar_part");
             CoinsSmall = game.Content.Load<Texture2D>("coin_small");
             CopperOre = game.Content.Load<Texture2D>("copper_ore");
         }

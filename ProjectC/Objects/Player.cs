@@ -112,6 +112,10 @@ namespace ProjectC.objects
                 Velocity.Y = 0;
             }
             position.Y += Velocity.Y;
+            if(!Collides(position+Vector2.UnitY) && Collides(position + Vector2.UnitY*2) && _onground && !_jumpedYet)
+            {
+                position += Vector2.UnitY;
+            }
         }
 
         public void LoadNearbyChunks()
@@ -193,12 +197,13 @@ namespace ProjectC.objects
             Camera.Position = position * TileHelper.TileSize;
             var click = mouseState.LeftButton == ButtonState.Pressed;
 
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i <= Hotbar.GetUpperBound(0); i++)
             {
                 var input = keyState.IsKeyDown(Keys.D0 + i);
                 if (input)
                 {
-                    HotbarSlot = i;
+                    HotbarSlot = i - 1;
+                    if (HotbarSlot < 0) HotbarSlot = Hotbar.GetUpperBound(0);
                 }
             }
 
@@ -253,6 +258,16 @@ namespace ProjectC.objects
             {
                 var facingflip = FacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
                 _spriteBatch.Draw(sprite, position*TileHelper.TileSize, null, Color.White, 0, origin, Vector2.One, facingflip, 0);
+            }
+        }
+
+        public void DrawGui(SpriteBatch batch)
+        {
+            for (var i = 0; i < Hotbar.GetUpperBound(0); i++)
+            {
+                var pos = Camera.Position + new Vector2(-128, 0) + new Vector2(i * 32, 128);
+                batch.Draw(Sprites.HotbarPart, pos - new Vector2(12, 12), Color.White);
+                batch.Draw(TileHelper.SpriteFrom(Hotbar[i, Chunk.ChunkTData]), pos, new Rectangle(0, 0, TileHelper.TileSize, TileHelper.TileSize), Color.White);
             }
         }
     }

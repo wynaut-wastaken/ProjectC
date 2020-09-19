@@ -103,6 +103,8 @@ namespace ProjectC
                 obj.draw(_spriteBatch);
             }
 
+            Player.LocalClient.DrawGui(_spriteBatch);
+
             DrawCount = 0;
             _spriteBatch.End();
 

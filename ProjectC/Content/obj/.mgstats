@@ -8,7 +8,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/clouds.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/clouds.xnb","TextureProcessor","Texture2DContent",769,40021,0.012
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/clouds_bg.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/clouds_bg.xnb","TextureProcessor","Texture2DContent",1194,244565,0.023
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/coin_gold.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/coin_gold.xnb","TextureProcessor","Texture2DContent",7547,1621,0.003
-"C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/coin_pickup.wav","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/coin_pickup.xnb","SoundEffectProcessor","SoundEffectContent",10188,10249,6.495
+"C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/coin_pickup.wav","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/coin_pickup.xnb","SoundEffectProcessor","SoundEffectContent",2832,2893,1.45
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/coin_small.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/coin_small.xnb","TextureProcessor","Texture2DContent",7645,2437,0.037
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/copper_ore.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/copper_ore.xnb","TextureProcessor","Texture2DContent",320,4181,0.004
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/copper_pipe.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/copper_pipe.xnb","TextureProcessor","Texture2DContent",463,4181,0.003
@@ -20,6 +20,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/forest_bg.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/forest_bg.xnb","TextureProcessor","Texture2DContent",18281,552805,0.164
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/fresh_tile.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/fresh_tile.xnb","TextureProcessor","Texture2DContent",193,4181,0.115
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/grass_jungle.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/grass_jungle.xnb","TextureProcessor","Texture2DContent",532,4181,0.027
+"C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/hotbar_part.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/hotbar_part.xnb","TextureProcessor","Texture2DContent",4730,4181,0.029
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/ladder.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/ladder.xnb","TextureProcessor","Texture2DContent",207,597,0.033
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/plains_bg.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/plains_bg.xnb","TextureProcessor","Texture2DContent",1575,245845,0.029
 "C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/plant.png","C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/bin/plant.xnb","TextureProcessor","Texture2DContent",307,1621,0.038

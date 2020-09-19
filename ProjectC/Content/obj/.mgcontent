@@ -25,6 +25,7 @@
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/forest_bg.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/fresh_tile.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/grass_jungle.png</File>
+    <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/hotbar_part.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/ladder.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/plains_bg.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/plant.png</File>
@@ -44,6 +45,7 @@
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/Untitled - 1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

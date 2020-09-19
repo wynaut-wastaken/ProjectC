@@ -259,6 +259,18 @@
 /processorParam:TextureFormat=Color
 /build:grass_jungle.png
 
+#begin hotbar_part.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hotbar_part.png
+
 #begin ladder.png
 /importer:TextureImporter
 /processor:TextureProcessor
