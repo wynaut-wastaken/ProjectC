@@ -45,7 +45,7 @@ namespace ProjectC.objects
         }
         public bool Collides(Vector2 pos)
         {
-           var hitTile = Dimension.Current.TileAtWorldPos(pos, Chunk.ChunkTData, true);
+            var hitTile = Dimension.Current.TileAtWorldPos(pos, Chunk.ChunkTData, true);
             var hasHit = TileHelper.HasHitbox(hitTile);
             return hasHit;
         }
