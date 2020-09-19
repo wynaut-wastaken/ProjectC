@@ -2,12 +2,14 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ProjectC.objects;
+using ProjectC.sound;
 using ProjectC.view;
 using ProjectC.world;
 using SpriteFontPlus;
@@ -22,9 +24,11 @@ namespace ProjectC
         private SpriteBatch _spriteBatch;
         public static int DrawCount;
         public static Rectangle WindowBounds;
+        public static MainGame Instance;
         
         public MainGame()
         {
+            Instance = this;
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -37,9 +41,10 @@ namespace ProjectC
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
             Sprites.ImportAll(this);
+            SoundManager.LoadSfx();
 
-            var font = File.ReadAllBytes(this.Content.RootDirectory + "/font.ttf");
-            var res = TtfFontBaker.Bake(font,32,512,512,new CharacterRange[] {new CharacterRange(' ','~') });
+            var font = File.ReadAllBytes(Content.RootDirectory + "/font.ttf");
+            var res = TtfFontBaker.Bake(font,16,256,256,new CharacterRange[] {new CharacterRange(' ','~') });
             Sprites.Font = res.CreateSpriteFont(GraphicsDevice);
 
         }
@@ -61,6 +66,8 @@ namespace ProjectC
 
             Dimension.DestroyThings();
             Dimension.LoadThings();
+
+            SoundManager.PopCoins();
 
             // step logic
             foreach (var obj in Dimension.Current.GameObjects)

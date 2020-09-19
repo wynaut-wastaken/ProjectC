@@ -7,6 +7,7 @@ using ProjectC.view;
 using System.Windows.Forms;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
+using SharpDX.DirectWrite;
 
 namespace ProjectC.objects
 {
@@ -16,7 +17,7 @@ namespace ProjectC.objects
         public static Player LocalClient;
 
         public Vector2 CamOffset = Vector2.One * 0.5f;
-        public float CollisionIncrement = 64;
+        public float CollisionIncrement = 128;
         private float inc { get => CollisionIncrement; }
 
         public float WalkSpeed
@@ -44,6 +45,8 @@ namespace ProjectC.objects
         public int[,] Hotbar = new int[10, Chunk.TileDepth];
         public int HotbarSlot;
 
+        public Rectangle Hitbox;
+
         public Player()
         {
             Dimension.LoadGameObject(this);
@@ -55,6 +58,7 @@ namespace ProjectC.objects
                 Hotbar[i, Chunk.ChunkTData] = i;
                 Hotbar[i, Chunk.ChunkTColor] = (int)Color.White.PackedValue;
             }
+            Hitbox = new Rectangle(position.ToPoint(), new Point(1, 3));
         }
         
         private int _oldScroll;
@@ -64,70 +68,50 @@ namespace ProjectC.objects
             var d = (value2 - value1) * amount;
             return value1 + d;
         }
-        
+
         public bool Collides(Vector2 pos)
         {
-            var hitTile = Dimension.Current.TileAtWorldPos(pos, Chunk.ChunkTData, true);
-            var hasHit = hitTile > 0;
+            var hitTile = Dimension.Current.TileAtWorldPos(pos - Vector2.UnitY * 2, Chunk.ChunkTData, true);
+            var hasHit = TileHelper.HasHitbox(hitTile);
+            if (!hasHit)
+            {
+                hitTile = Dimension.Current.TileAtWorldPos(pos - Vector2.UnitY, Chunk.ChunkTData, true);
+                hasHit = TileHelper.HasHitbox(hitTile);
+            }
+            if (!hasHit)
+            {
+                hitTile = Dimension.Current.TileAtWorldPos(pos, Chunk.ChunkTData, true);
+                hasHit = TileHelper.HasHitbox(hitTile);
+            }
             return hasHit;
         }
 
         public void Collide()
         {
-            var i = 0;
-            while (Collides(position) && i < inc)
-            {
-                position -= Vector2.UnitY / inc;
-                if (!Collides(position)) return;
-                i++;
-            }
+            if (Collides(position)) return;
+
+            var prevPos = position;
+
             if (Collides(position + Velocity.X * Vector2.UnitX))
             {
-                var ppos = position;
-                while (Collides(ppos + Velocity.X * Vector2.UnitX))
-                {
-                    ppos -= Vector2.UnitY/inc;
-                    i++;
-                    if(i > inc)
-                    {
-                        ppos = position; 
-                        break;
-                    }
+                if(!Collides(position + Velocity.X * Vector2.UnitX - Vector2.UnitY) && _onground) {
+                    position.Y -= 1;
                 }
-                if (!_onground) ppos = position;
-                position = ppos;
-                CollideHorizontally();
-                return;
+                else
+                {
+                    Velocity.X = 0;
+                }
             }
-
+            position.X += Velocity.X;
             if (Collides(position + Velocity.Y * Vector2.UnitY))
             {
-                i = 0;
-                while (!Collides(position + Vector2.Normalize(Velocity.Y * Vector2.UnitY) / inc) && i < inc)
+                while(!Collides(position + Math.Sign(Velocity.Y)*Vector2.UnitY/inc))
                 {
-                    position += Vector2.Normalize(Velocity.Y * Vector2.UnitY) / inc;
-                    i++;
+                    position.Y += Math.Sign(Velocity.Y) / inc;
                 }
                 Velocity.Y = 0;
             }
-            else if (Collides(position + Vector2.UnitY * 2) && !Collides(position + Vector2.UnitY) && !_jumpedYet)
-            {
-                position += Vector2.UnitY;
-            }
-            CollideHorizontally();
-        }
-        private void CollideHorizontally()
-        {
-            if (Collides(position + Velocity.X * Vector2.UnitX))
-            {
-                var i = 0;
-                while (!Collides(position + Vector2.Normalize(Velocity.X * Vector2.UnitX) / inc) && i < inc)
-                {
-                    position += Vector2.Normalize(Velocity.X * Vector2.UnitX) / inc;
-                    i++;
-                }
-                Velocity.X = 0;
-            }
+            position.Y += Velocity.Y;
         }
 
         public void LoadNearbyChunks()
@@ -170,22 +154,20 @@ namespace ProjectC.objects
                 position.Y -= (position.Y - (float)Math.Floor(position.Y));
             }
             Velocity += new Vector2((d - a) * WalkSpeed, _onground ? 0 : FallSpeed);
-            if(_onground)
-            {
-                _jumpedYet = false;
-            }
             if(keyState.IsKeyDown(Keys.Space) && _onground && !_jumpedYet)
             {
                 _onground = false;
                 Velocity.Y = -JumpHeight;
                 _jumpedYet = true;
             }
+            if(keyState.IsKeyUp(Keys.Space))
+            {
+                _jumpedYet = false;
+            }
             Velocity.Y = Math.Clamp(Velocity.Y, -MaxYSpeed, _onground ? 0 : MaxYSpeed);
             Velocity.X = Lerp(Math.Clamp(Velocity.X, -WalkSpeed * 2, WalkSpeed * 2), 0, 0.25f);
 
             Collide();
-
-            position += Velocity;
             
             var scroll = _oldScroll - mouseState.ScrollWheelValue;
             _oldScroll = mouseState.ScrollWheelValue;

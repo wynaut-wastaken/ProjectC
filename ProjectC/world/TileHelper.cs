@@ -116,6 +116,11 @@ namespace ProjectC.world
             }
         }
 
+        public static bool HasHitbox(int TileType)
+        {
+            return TileType != (int)EnumTiles.WallCave && TileType != (int)EnumTiles.Air;
+        }
+
         public static void UpdateTile(Chunk chunk, Point pos, bool manual)
         {
             UpdateTileRendering(chunk, pos, manual);

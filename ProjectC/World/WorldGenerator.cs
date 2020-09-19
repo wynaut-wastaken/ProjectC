@@ -35,18 +35,19 @@ namespace ProjectC.world
                     }
                     var pos = new Point(i, j);
                     var worm = chunk.Position + pos.ToVector2();
-                    if (!WormHasBeen(worm.X, worm.Y))
-                    {
-                        TileHelper.TryMakeTile((int)TileTypeFromWorldNoise(n, worm.X, worm.Y), 0, (int)Color.White.PackedValue, 0, chunk, pos);
-                    }
+                    TileHelper.TryMakeTile((int)TileTypeFromWorldNoise(n, worm.X, worm.Y), 0, (int)Color.White.PackedValue, 0, chunk, pos);
                 }
             }
         }
         public static EnumTiles TileTypeFromWorldNoise(float noise, float X, float Y)
         {
-            var toGrass = Y <= noise + 1;
-            var toDirt = Y <= noise + NoiseGenerator.GenFloatNoise(X + Y + noise, 64);
-            return toGrass ? EnumTiles.Grass : toDirt ? EnumTiles.Dirt : EnumTiles.Stone;
+            if (!WormHasBeen(X, Y))
+            {
+                var toGrass = Y <= noise + 1;
+                var toDirt = Y <= noise + NoiseGenerator.GenFloatNoise(X + Y + noise, 64);
+                return toGrass ? EnumTiles.Grass : toDirt ? EnumTiles.Dirt : EnumTiles.Stone;
+            }
+            return EnumTiles.WallCave;
         }
 
         public static bool WormHasBeen(float seedI, float seedJ)

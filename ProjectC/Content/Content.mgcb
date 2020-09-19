@@ -121,6 +121,12 @@
 /processorParam:TextureFormat=Color
 /build:coin_gold.png
 
+#begin coin_pickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:coin_pickup.wav
+
 #begin coin_small.png
 /importer:TextureImporter
 /processor:TextureProcessor
