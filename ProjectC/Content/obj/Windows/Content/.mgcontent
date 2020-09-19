@@ -12,6 +12,7 @@
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/chunk.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/clouds.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/clouds_bg.png</File>
+    <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/coin_big.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/coin_pickup.wav</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/coin_small.png</File>
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/copper_ore.png</File>
@@ -44,6 +45,7 @@
     <File>C:/Users/Cal/Documents/GitHub/ProjectC/ProjectC/Content/Untitled - 1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

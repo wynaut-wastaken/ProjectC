@@ -77,3 +77,4 @@ C:\Users\Cal\Documents\GitHub\ProjectC\ProjectC\bin\Debug\netcoreapp3.1\Content\
 C:\Users\Cal\Documents\GitHub\ProjectC\ProjectC\bin\Debug\netcoreapp3.1\Content\plains_bg.xnb
 C:\Users\Cal\Documents\GitHub\ProjectC\ProjectC\bin\Debug\netcoreapp3.1\Content\coin_pickup.xnb
 C:\Users\Cal\Documents\GitHub\ProjectC\ProjectC\bin\Debug\netcoreapp3.1\Content\hotbar_part.xnb
+C:\Users\Cal\Documents\GitHub\ProjectC\ProjectC\bin\Debug\netcoreapp3.1\Content\coin_big.xnb
